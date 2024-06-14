@@ -33,6 +33,7 @@ class MemoPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Memo'),
+        backgroundColor: Colors.orange,
       ),
       body: Column(
         children: [

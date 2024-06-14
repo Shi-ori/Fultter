@@ -12,19 +12,19 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const TimerPage(),
+      home: const AI(),
     );
   }
 }
 
-class TimerPage extends StatefulWidget {
-  const TimerPage({Key? key}) : super(key: key);
+class AI extends StatefulWidget {
+  const AI({Key? key}) : super(key: key);
 
   @override
-  State<TimerPage> createState() => _TimerPageState();
+  State<AI> createState() => _TimerPageState();
 }
 
-class _TimerPageState extends State<TimerPage> {
+class _TimerPageState extends State<AI> {
   int _counter = 0;
   Timer? _timer;
   int? _alarmTime;

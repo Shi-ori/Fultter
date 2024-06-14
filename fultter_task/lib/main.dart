@@ -1,30 +1,30 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
-import 'next_page.dart';
-import 'Timer.dart';
 import 'dart:async';
+import 'menu.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+  const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Timer',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: '授業課題'),
+      home: const MyHomePage(title: 'Flutter Timer'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({super.key, required this.title});
 
   final String title;
 
@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
   String _currentTime = '';
 
   @override
-  void initState() {
+  void initState() { //タイマ更新
     super.initState();
     _updateTime();
     Timer.periodic(const Duration(seconds: 1), (Timer t) => _updateTime());
@@ -54,16 +54,20 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //ヘッター
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
+        backgroundColor: Colors.orange,
       ),
-      //ぼでぃ
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+            const SizedBox(height: 20), 
+            const Text(
+              '!!!!!!こんにちは!!!!!',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 20), 
             const Text(
               'Current Time:',
             ),
@@ -71,28 +75,19 @@ class _MyHomePageState extends State<MyHomePage> {
               _currentTime,
               style: Theme.of(context).textTheme.headline4,
             ),
-            FloatingActionButton(
-              onPressed: () {
-                // ボタンが押されたときの処理
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const TimerPage()),
-                );
-              },
-              child:  const Text('Timer'),
-            )
+            const SizedBox(height: 60), 
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton( //メニュー遷移
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const NextPage()),
+            MaterialPageRoute(builder: (context) => const memu()),
           );
         },
         tooltip: 'Next Page',
-        child: const Text('Next'),
+        child: const Text('MEMO'),
       ), // This trailing comma makes a
     );
   }
