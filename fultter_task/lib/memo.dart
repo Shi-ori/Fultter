@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-// メモページ遷移
+
 class NextPage extends StatelessWidget {
   const NextPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // ChangeNotifierProviderがあるみたい
     return ChangeNotifierProvider(
       create: (context) => MemoModel(),
       child: MaterialApp(
@@ -26,6 +27,7 @@ class MemoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     final memoModel = Provider.of<MemoModel>(context, listen: true);
 
     return Scaffold(
@@ -36,14 +38,13 @@ class MemoPage extends StatelessWidget {
       body: Column(
         children: [
           Expanded(
-            // メモリスト表示
             child: ListView.builder(
-              itemCount: memoModel.memoList.length,//メモ配列
+              itemCount: memoModel.memoList.length,
               itemBuilder: (context, index) {
                 final memo = memoModel.memoList[index];
                 return ListTile(
                   title: Text(memo),
-                  trailing: IconButton( //消すボタン
+                  trailing: IconButton(
                     icon: const Icon(Icons.delete),
                     onPressed: () {
                       memoModel.removeMemo(index);
@@ -58,11 +59,10 @@ class MemoPage extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
-                  // 新しいメモを入力
                   child: TextField(
                     controller: memoModel.textController,
                     decoration: const InputDecoration(
-                      labelText: '新規追加',
+                      labelText: 'New Memo',
                     ),
                   ),
                 ),
@@ -77,11 +77,12 @@ class MemoPage extends StatelessWidget {
           ),
         ],
       ),
+        
     );
   }
 }
 
-// メモリスト管理
+// メモの管理
 class MemoModel extends ChangeNotifier {
   final List<String> _memoList = [];
   final TextEditingController _textController = TextEditingController();
@@ -90,7 +91,7 @@ class MemoModel extends ChangeNotifier {
   List<String> get memoList => _memoList;
   TextEditingController get textController => _textController;
 
-  // 新しいメモ追加
+  // メモを追加
   void addMemo() {
     if (_textController.text.isNotEmpty) {
       _memoList.add(_textController.text);
