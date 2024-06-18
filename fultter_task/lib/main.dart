@@ -87,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         },
         tooltip: 'Next Page',
-        child: const Text('MEMO'),
+        child: const Text('MENU'),
       ), // This trailing comma makes a
     );
   }

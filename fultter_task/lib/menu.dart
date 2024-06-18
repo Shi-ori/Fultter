@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'stopwatch.dart';
 import 'memo.dart';
 import 'timer_page.dart';
 
@@ -41,7 +42,12 @@ class memu extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center, 
               children: [
-                ElevatedButton(onPressed: () {}, child: const Text('ボタン')),
+                ElevatedButton(onPressed: () {
+                  Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Stopwatch()),
+                  );
+                }, child: const Text('Stop watch')),
                 const SizedBox(width: 80), // 横スペース
                 ElevatedButton(onPressed: () {}, child: const Text('ボタン')),
               ],
