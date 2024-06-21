@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import 'main.dart';
 
 class NextPage extends StatelessWidget {
   const NextPage({Key? key}) : super(key: key);
@@ -27,13 +27,18 @@ class MemoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     final memoModel = Provider.of<MemoModel>(context, listen: true);
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Memo'),
         backgroundColor: Colors.orange,
+        leading: IconButton( 
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: Column(
         children: [
@@ -44,7 +49,7 @@ class MemoPage extends StatelessWidget {
                 final memo = memoModel.memoList[index];
                 return ListTile(
                   title: Text(memo),
-                  trailing: IconButton(
+                  trailing: IconButton( //削除ボタン
                     icon: const Icon(Icons.delete),
                     onPressed: () {
                       memoModel.removeMemo(index);
@@ -77,7 +82,6 @@ class MemoPage extends StatelessWidget {
           ),
         ],
       ),
-        
     );
   }
 }

@@ -62,12 +62,12 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            const SizedBox(height: 20), 
+            const SizedBox(height: 80), 
             const Text(
               '!!!!!!こんにちは!!!!!',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 20), 
+            const SizedBox(height: 70), 
             const Text(
               'Current Time:',
             ),

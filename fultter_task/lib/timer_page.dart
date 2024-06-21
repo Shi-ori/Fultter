@@ -24,6 +24,12 @@ class Timer extends StatelessWidget {
       appBar: AppBar(
         title: Text('Simple Template'),
         backgroundColor: Colors.orange,
+        leading: IconButton( 
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: Center(
         child: Text(
