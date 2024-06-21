@@ -95,37 +95,44 @@ class _stopwatch extends State<Stopwatch> {
             ),
             const SizedBox(height: 30),
             ElevatedButton(
+              //スタートボタン
               onPressed: () {
                 _stopwatchTimer.onStartTimer();
               },
               child: const Text('Start'),
             ),
-
             const SizedBox(height: 30),
             ElevatedButton(
+              // Stopボタン
               onPressed: () {
-                _stopwatchTimer.onStartTimer();
+                _stopwatchTimer.onStopTimer();
               },
-              child: const Text('Start'),
-
+              child: const Text('Stop'),
             ),
-
             const SizedBox(height: 30),
             ElevatedButton(
+              //リセットボタン
               onPressed: () {
-                _stopwatchTimer.onStartTimer();
+                _stopwatchTimer.onResetTimer();
               },
-              child: const Text('Start'),
-
+              child: const Text('reset'),
             ),
-
             const SizedBox(height: 30),
             ElevatedButton(
-              onPressed: () {
-                _stopwatchTimer.onStartTimer();
+              // ラップボタン
+              onPressed: () async { //非同期処理よ
+                if (!_stopwatchTimer.isRunning) {
+                  return;
+                }
+                _stopwatchTimer.onAddLap();
+                await Future<void>.delayed(const Duration(milliseconds: 100));
+                await _scrollController.animateTo(
+                  _scrollController.position.maxScrollExtent,
+                  duration: const Duration(milliseconds: 200),
+                  curve: Curves.easeOut,
+                );
               },
-              child: const Text('Start'),
-
+              child: const Text('Lap'),
             ),
           ],
         ),
