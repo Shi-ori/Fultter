@@ -13,6 +13,7 @@ class memu extends StatelessWidget {
       appBar: AppBar(
         title: const Text('MEMU'),
         backgroundColor: Colors.orange,
+        
       ),
       body: Center(
         child: Column(
@@ -29,13 +30,14 @@ class memu extends StatelessWidget {
                       );
                     },
                     child: const Text('MEMO')),
-                const SizedBox(width: 80), // 横スペース
+                /*const SizedBox(width: 80), // 横スペース
                 ElevatedButton(onPressed: () {
                   Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => const Fullter_Timer()),
                   );
                 }, child: const Text('TIMER')),
+                */
               ],
             ),
             const SizedBox(height: 80), // 縦スペース
@@ -48,8 +50,9 @@ class memu extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => const Stopwatch()),
                   );
                 }, child: const Text('Stop watch')),
-                const SizedBox(width: 80), // 横スペース
+                /*onst SizedBox(width: 80), // 横スペース
                 ElevatedButton(onPressed: () {}, child: const Text('ボタン')),
+                */
               ],
             ),
           ],

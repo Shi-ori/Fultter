@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'menu.dart';
@@ -15,8 +13,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Timer',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),//色を設定
+        useMaterial3: true, //Googleのフレームワーク
+        fontFamily: 'Roboto', // font指定
       ),
       home: const MyHomePage(title: 'Flutter Timer'),
     );
@@ -36,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
   String _currentTime = '';
 
   @override
-  void initState() { //タイマ更新
+  void initState() {
     super.initState();
     _updateTime();
     Timer.periodic(const Duration(seconds: 1), (Timer t) => _updateTime());
@@ -58,28 +57,70 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
         backgroundColor: Colors.orange,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            const SizedBox(height: 80), 
-            const Text(
-              '!!!!!!こんにちは!!!!!',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 70), 
-            const Text(
-              'Current Time:',
-            ),
-            Text(
-              _currentTime,
-              style: Theme.of(context).textTheme.headline4,
-            ),
-            const SizedBox(height: 60), 
-          ],
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.deepPurple, Colors.purpleAccent], //グラデーション
+            begin: Alignment.topLeft, //グラデーション開始位置
+            end: Alignment.bottomRight,// 終了位置
+          ),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const SizedBox(height: 80),
+              Card(
+                margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    children: const <Widget>[
+                      Text(
+                        '!!!!!!こんにちは!!!!!',
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.deepPurple,
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Text(
+                        'Current Time:',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black87,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Text(
+                _currentTime,
+                style: TextStyle(
+                  fontSize: 48,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  shadows: [
+                    Shadow(
+                      offset: Offset(2, 2),
+                      blurRadius: 3,
+                      color: Colors.black45,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 60),
+            ],
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton( //メニュー遷移
+      floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
             context,
@@ -87,8 +128,9 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         },
         tooltip: 'Next Page',
-        child: const Text('MENU'),
-      ), // This trailing comma makes a
+        backgroundColor: Colors.orange,
+        child: const Icon(Icons.menu),
+      ),
     );
   }
 }
