@@ -81,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Column(
                     children: const <Widget>[
                       Text(
-                        '!!!!!!こんにちは!!!!!',
+                        'ＷＥＬＣＯＭＥ！！',
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
