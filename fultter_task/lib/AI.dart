@@ -1,5 +1,5 @@
-import 'dart:async';
-import 'package:flutter/material.dart';
+import 'dart:async';//このページはAIに作らせたので遷移させません
+import 'package:flutter/material.dart';//このページには遷移できません
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class MyApp extends StatelessWidget {

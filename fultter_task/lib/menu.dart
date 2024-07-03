@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'stopwatch.dart';
 import 'memo.dart';
-import 'timer_page.dart';
+//import 'timer_page.dart';
 
 class memu extends StatelessWidget {
   const memu({Key? key}) : super(key: key);
